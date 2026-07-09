@@ -1,0 +1,64 @@
+View creation on Gold Layer data in synapse(SQL)
+-------------------------------------------------------------------------------------------------------
+
+CREATE VIEW gold.FinanceProj1cnfz
+AS
+SELECT 
+    * 
+FROM 
+OPENROWSET(
+   BULK 'https://updatedfinanceprj1dl.blob.core.windows.net/silver/proj1.1',
+    FORMAT = 'PARQUET'
+        ) AS VIEW_1
+
+
+CREATE VIEW gold_proj2_cnfz
+AS
+SELECT * FROM 
+OPENROWSET(
+    BULK 'https://updatedfinanceprj1dl.blob.core.windows.net/silver/proj1.2',
+    FORMAT = 'PARQUET'
+            )AS VIEW_2
+
+
+
+CREATE VIEW gold_proj3_cnfz
+AS
+SELECT * FROM 
+OPENROWSET(
+BULK 'https://updatedfinanceprj1dl.blob.core.windows.net/silver/proj1.3',
+FORMAT = 'PARQUET'
+)AS VIEW_3
+
+
+-------------------------------------------------------------------------------------------------------
+External Table creation in synapse(SQL)
+-------------------------------------------------------------------------------------------------------
+
+CREATE DATABASE SCOPED CREDENTIAL cred_proj1
+WITH IDENTITY = 'Managed Identity'
+
+CREATE EXTERNAL DATA SOURCE source_silver
+
+WITH
+
+(LOCATION = 'https://updatedfinanceprj1dl.blob.core.windows.net/silver/proj1.1',
+ CREDENTIAL = cred_proj1
+
+)   
+
+CREATE EXTERNAL DATA SOURCE source_GOLD
+
+WITH
+
+(LOCATION = 'https://updatedfinanceprj1dl.blob.core.windows.net/GOLD/proj1.1',
+ CREDENTIAL = cred_proj1
+
+)   
+
+CREATE EXTERNAL FILE FORMAT file_format_proj1
+WITH (
+         FORMAT_TYPE = PARQUET
+      , DATA_COMPRESSION = 'org.apache.hadoop.io.compress.SnappyCodec'
+       
+    );
