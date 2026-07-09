@@ -1,0 +1,23 @@
+[
+{
+
+"param_proj_1dynmc":  "SumitChatterjee-dev/Finance_Project_1/refs/heads/Raw_data/Proj_Raw1/Statement_1.csv",
+"p_folder_proj1" :"Proj_Raw1.1",
+"p_proj1_file" :  "Proj_Raw1.1.csv"
+
+},
+{ 
+    "param_proj_1dynmc":  "SumitChatterjee-dev/Finance_Project_1/refs/heads/Raw_data/Proj_Raw1/Statement_2.csv",
+"p_folder_proj1" :"Proj_Raw1.2",
+"p_proj1_file" :"Proj_Raw1.2.csv"
+
+
+},
+{
+"param_proj_1dynmc":  "SumitChatterjee-dev/Finance_Project_1/refs/heads/Raw_data/Proj_Raw1/Statement_3.csv",
+"p_folder_proj1" :"Proj_Raw1.3",
+"p_proj1_file" :"Proj_Raw1.3.csv"
+
+}
+
+]
